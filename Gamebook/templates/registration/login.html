@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+{% load staticfiles %}
+{% block header %}
+    <style>
+    input[type=text], input[type=password] {
+        min-height: 41px;
+        display: block;
+        width: 100%;
+		box-shadow: none !important;
+        border: 1px solid #e3e3e3;
+        background: #eeeeee;
+        padding: 5px;
+        box-sizing: border-box;
+	}
+
+	input[type=text]:focus, input[type=password]:focus {
+		border-color: #70c5c0;
+	}
+    .btn, input[type=text], input[type=password] {
+        border-radius: 4px;
+    }
+	.login-form {
+		width: 350px;
+		margin: 0 auto;
+		padding: 20vh 0 30px;
+	}
+	.login-form form {
+		color: #7a7a7a;
+		border-radius: 2px;
+    	margin-bottom: 15px;
+        font-size: 13px;
+        background: #fff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        position: relative;
+    }
+
+	.login-form h2 {
+		font-size: 22px;
+        margin: 35px 0 25px;
+    }
+	.login-form .avatar {
+		position: absolute;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+		top: -50px;
+		width: 95px;
+		height: 95px;
+		border-radius: 50%;
+		z-index: 9;
+		padding: 15px;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+	.login-form .avatar img {
+		width: 100%;
+	}
+    .login-form .btn {
+        font-size: 16px;
+        font-weight: bold;
+		border: none;
+		margin-bottom: 20px;
+    }
+	.login-form .btn:hover, .login-form .btn:focus {
+        outline: none !important;
+	}
+	.login-form a {
+		color: inherit;
+        font-weight: bold;
+		text-decoration: underline;
+	}
+	.login-form a:hover {
+		text-decoration: none;
+	}
+	.login-form form a {
+		color: #7a7a7a;
+		text-decoration: none;
+	}
+	.login-form form a:hover {
+		text-decoration: underline;
+	}
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div class="login-form">
+        <form method="post">
+		<div class="avatar bg-info">
+			<img src="{% static "gamebook-logo.png" %}">
+		</div>
+        <h2 class="text-center">Member Login</h2>
+          {% csrf_token %}
+            <div class="form-group">Username
+            {{ form.username }}</div>
+
+        <div class="form-group">Password {{ form.password }}</div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-info btn-lg btn-block">Sign in</button>
+        </div>
+            {%  if form.non_field_errors %}
+                <ul class="form-errors">
+                    {%  for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </form>
+        <p class="text-center small text-info">Don't have an account? <a href="{% url "signup" %}">Sign up here!</a></p>
+    </div>
+{% endblock %}

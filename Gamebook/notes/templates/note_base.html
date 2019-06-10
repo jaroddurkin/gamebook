@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block nav %}
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-info">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand"><img src="{% static "gamebook-small.png" %}" height="30"/></a>
+        </div>
+        <div class="nav navbar-nav mr-auto">
+            <a href="{% url 'note_new' %}" class="nav-link">Add New Note <span class="fas fa-plus"></span></a>
+        </div>
+
+        <div class="navbar-nav float-right">
+            <a href="{% url 'logout' %}" class="nav-link"><span class="fas fa-power-off"></span> {{ request.user }}</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <main>
+        <div class="container py-5 px-lg-5" style="padding-top: 80px !important;">
+        {% block content %}
+        {% endblock %}
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container p-3 pb-5 text-center font-italic">
+            &copy; Gamebook 2019
+        </div>
+    </footer>
+{% endblock %}

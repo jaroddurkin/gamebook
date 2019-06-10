@@ -1,0 +1,87 @@
+<html>
+	 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head> 
+	<style>
+	body {
+		margin: 0px;
+		margin-top: 10px;
+		background-color: blue;
+		text-align: center;
+	}
+	#bicbacboe {
+		display: none;
+	}
+
+	.row {
+
+	}
+	.col{
+		display:inline-block;
+		width:80px ;
+		height: 80px;
+		text-align: center;
+		background-color: white;
+		margin-top: 2px;
+		font-size:30px; 
+		vertical-align: middle; 
+		padding: 20px;
+		padding-top: 30px; 
+	}
+	button {
+		padding: 20px;
+		font-size: 30px;
+		margin-top: 10px;
+	}
+	</style>
+
+	<body>
+	<div id="bicbacboe">
+	<div class="row">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	</div>
+	<div class="row">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	</div>
+	<div class="row">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col"></div>
+	</div>	
+	<div>
+	<button id="restart">restart</button></div>
+	</div>
+	<button id="show_game">Play BicBacBoe</button>
+	<script>
+		const PLAYER_TOKEN = 'X'
+		const COMPUTER_TOKEN = 'Y'
+
+		$(document).ready(function() {
+			const grid = [
+				[' ',' ',' '],
+				[' ',' ',' '],
+				[' ',' ',' ']
+				];
+
+		$('.col').click(function() {
+			$(this).html(PLAYER_TOKEN);
+			});
+		
+		const show_game = $('#show_game');
+
+			show_game.click(function() {
+				$("#bicbacboe").toggle();
+				if(show_game.text() == "Play BicBacBoe") {
+					show_game.text("Hide BBB")
+				}
+				else {
+					show_game.text("Play BicBacBoe")
+				}
+			});
+		});
+	</script>
+	</html>

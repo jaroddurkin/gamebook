@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    {% load staticfiles %}
+    <style type="text/css">
+        html, body { height: 100%; }
+        body {
+            background-image: url({% static 'gamebook_background.png' %});
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+        .center {
+            line-height: 100px;
+            text-align: center;
+            height: 100vh;
+        }
+
+        img#logo {
+            max-width: 80%;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <main>
+        <div class="center d-flex align-content-center justify-content-center flex-wrap">
+            <div>
+                <img id="logo" src="{% static 'gamebook-shadow.png' %}" />
+                <div id="">
+                    <a href="{% url 'login' %}" class="btn btn-info btn-lg " role="button" aria-disabled="false">Login</a>
+                    <a href="{% url 'signup' %}" class="btn btn-info btn-lg " role="button" aria-disabled="false">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
